@@ -1,11 +1,11 @@
 pragma solidity ^0.4.4;
 
-import "./SafeMath.sol";
+import "../Utilities/SafeMath.sol";
 import "./Token.sol";
 import "./ERC20.sol";
 import "./ERC223.sol";
 import "./ERC223ReceivingContract.sol";
-import "./Addresses.sol";
+import "../Utilities/Addresses.sol";
 
 
 contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
@@ -114,14 +114,15 @@ contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
         emit Approval(msg.sender, _spender,  _allowances[msg.sender][_spender]);
         return true;
       }
+
       function allowance(address _owner, address _spender)
          public
          view
          returns (uint) {
-         if (_allowances[_owner][_spender] < _balanceOf[_owner]) {
-           return _allowances[_owner][_spender];
-         }
-         return _balanceOf[_owner];
+           if (_allowances[_owner][_spender] < _balanceOf[_owner]) {
+             return _allowances[_owner][_spender];
+           }
+           return _balanceOf[_owner];
      }
 
 
