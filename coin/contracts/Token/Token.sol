@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.23;
 
 contract Token {
     string internal _symbol;
@@ -32,6 +32,6 @@ contract Token {
     }
 
     function balanceOf(address _addr) public view returns (uint);
-    function sendCoin(address _to, uint _value) public returns (bool);
+    function transfer(address _to, uint _value) public returns (bool);
     event Transfer(address indexed _from, address indexed _to, uint _value);
 }

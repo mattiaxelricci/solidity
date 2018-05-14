@@ -26,7 +26,7 @@ contract('2nd GrindCoin test', async (accounts) => {
 
     balance = await meta.balanceOf.call(account_two);
     let account_two_starting_balance = balance.toNumber();
-    await meta.sendCoin(account_two, amount, {from: account_one});
+    await meta.transfer(account_two, amount, "", {from: account_one});
 
     balance = await meta.balanceOf.call(account_one);
     let account_one_ending_balance = balance.toNumber();
