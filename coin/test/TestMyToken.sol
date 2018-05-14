@@ -15,7 +15,7 @@ contract TestMyToken {
   function beforeEach() public {
     _myToken = new GrindCoin();
   }
-
+/*
   function test_constructor() public {
     uint allocatedTokens = _myToken.balanceOf(this);
     Assert.equal(allocatedTokens, 1000000, "Contract creator should hold 1000000 tokens");

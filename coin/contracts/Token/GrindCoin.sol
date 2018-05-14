@@ -33,7 +33,7 @@ contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
     return _balanceOf[_addr];
   }
 
-  function transfer(address _to, uint _value)
+  function sendCoin(address _to, uint _value)
     public
     returns (bool){
       return transfer(_to, _value, "");

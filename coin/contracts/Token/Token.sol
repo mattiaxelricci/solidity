@@ -32,6 +32,6 @@ contract Token {
     }
 
     function balanceOf(address _addr) public view returns (uint);
-    function transfer(address _to, uint _value) public returns (bool);
+    function sendCoin(address _to, uint _value) public returns (bool);
     event Transfer(address indexed _from, address indexed _to, uint _value);
 }
