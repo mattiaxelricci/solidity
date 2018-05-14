@@ -15,7 +15,7 @@ contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
 
   event Burn(address indexed burner, uint256 value);
 
-  function GrindToken () public {
+  constructor () public {
     _balanceOf[msg.sender] = _totalSupply;
   }
 
@@ -47,14 +47,14 @@ contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
       require(_value <= _balanceOf[msg.sender]);
 
       if(_to.isContract()){
-        ERC223ReceivingContract _contract = ERC223ReceivingContract(_to);
-        _contract.tokenFallback(msg.sender, _value, _data);
+        ERC223ReceivingContract _contra = ERC223ReceivingContract(_to);
+        _contra.tokenFallback(msg.sender, _value, _data);
       }
 
       _balanceOf[msg.sender] = _balanceOf[msg.sender].sub(_value);
       _balanceOf[_to] = _balanceOf[_to].add(_value);
 
-      emit Transfer(msg.sender, _to, _value);
+      emit Transfer(msg.sender, _to, _value, _data);
 
       return true;
   }
@@ -69,9 +69,8 @@ contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
       public
       returns (bool) {
         require(_value > 0);
-        require(_allowances[_from][msg.sender] > 0);
         require( _balanceOf[_from] >= _value);
-        require(_allowances[_from][_to] >= _value);
+        require(allowance(_from, msg.sender) >= _value);
 
         _allowances[_from][msg.sender].sub(_value);
 
@@ -83,7 +82,7 @@ contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
         _balanceOf[_from] = _balanceOf[_from].sub(_value);
         _balanceOf[_to] = _balanceOf[_to].add(_value);
 
-    emit Transfer(_from, _to, _value);
+    emit Transfer(_from, _to, _value, _data);
 
     return true;
 
