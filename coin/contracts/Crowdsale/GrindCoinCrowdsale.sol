@@ -10,7 +10,7 @@ contract GrindCoinCrowdsale is Ownable{
 
   using SafeMath for uint256;
 
-  GrindCoin public token ;
+  GrindCoin public token ; 
 
   RefundVault public walletVault;
 

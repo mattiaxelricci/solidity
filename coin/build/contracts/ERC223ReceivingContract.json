@@ -29,9 +29,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.4;\r\n\r\ncontract ERC223ReceivingContract {\r\n    function tokenFallback(address _from, uint _value, bytes _data) public;\r\n}\r\n",
-  "sourcePath": "C:\\Users\\Utente\\Desktop\\coin\\contracts\\Token\\ERC223ReceivingContract.sol",
+  "sourcePath": "C:\\Users\\home\\github\\solidity\\coin\\contracts\\Token\\ERC223ReceivingContract.sol",
   "ast": {
-    "absolutePath": "/C/Users/Utente/Desktop/coin/contracts/Token/ERC223ReceivingContract.sol",
+    "absolutePath": "/C/Users/home/github/solidity/coin/contracts/Token/ERC223ReceivingContract.sol",
     "exportedSymbols": {
       "ERC223ReceivingContract": [
         747
@@ -180,7 +180,7 @@
     "src": "0:143:4"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/Utente/Desktop/coin/contracts/Token/ERC223ReceivingContract.sol",
+    "absolutePath": "/C/Users/home/github/solidity/coin/contracts/Token/ERC223ReceivingContract.sol",
     "exportedSymbols": {
       "ERC223ReceivingContract": [
         747
@@ -334,5 +334,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-13T14:33:30.084Z"
+  "updatedAt": "2018-05-14T10:04:51.223Z"
 }
