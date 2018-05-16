@@ -61,9 +61,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.23;\r\n\r\ninterface ERC223 {\r\n    function transfer(address _to, uint _value, bytes _data) public returns (bool);\r\n    event Transfer(address indexed _from, address indexed _to, uint _value, bytes _data);\r\n}\r\n",
-  "sourcePath": "C:\\Users\\Utente\\github\\solidity\\coin\\contracts\\Token\\ERC223.sol",
+  "sourcePath": "C:\\Users\\home\\github\\solidity\\coin\\contracts\\Token\\ERC223.sol",
   "ast": {
-    "absolutePath": "/C/Users/Utente/github/solidity/coin/contracts/Token/ERC223.sol",
+    "absolutePath": "/C/Users/home/github/solidity/coin/contracts/Token/ERC223.sol",
     "exportedSymbols": {
       "ERC223": [
         735
@@ -362,7 +362,7 @@
     "src": "0:227:3"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/Utente/github/solidity/coin/contracts/Token/ERC223.sol",
+    "absolutePath": "/C/Users/home/github/solidity/coin/contracts/Token/ERC223.sol",
     "exportedSymbols": {
       "ERC223": [
         735
@@ -666,5 +666,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-15T17:14:47.400Z"
+  "updatedAt": "2018-05-16T11:45:43.195Z"
 }

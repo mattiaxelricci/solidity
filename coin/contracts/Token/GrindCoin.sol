@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.4;
 
 import "../Utilities/SafeMath.sol";
 import "./Token.sol";
@@ -36,8 +36,7 @@ contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
   function transfer(address _to, uint _value)
     public
     returns (bool){
-       bytes memory empty;
-      return transfer(_to, _value, empty);
+      return transfer(_to, _value, "");
     }
 
   function transfer(address _to, uint _value, bytes _data)
@@ -45,7 +44,7 @@ contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
     returns (bool){
       require(_value > 0);
       require(_to != address(0));
-      require(_value <= _balanceOf[msg.sender]);
+      require(_balanceOf[msg.sender]>= _value);
 
       if(_to.isContract()){
         ERC223ReceivingContract _contra = ERC223ReceivingContract(_to);
@@ -54,8 +53,8 @@ contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
 
       _balanceOf[msg.sender] = _balanceOf[msg.sender].sub(_value);
       _balanceOf[_to] = _balanceOf[_to].add(_value);
-      address from = msg.sender;
-      emit Transfer(from , _to, _value, _data);
+
+      emit Transfer(msg.sender, _to, _value, _data);
 
       return true;
   }

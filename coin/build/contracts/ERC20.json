@@ -102,9 +102,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.23;\r\n\r\ninterface ERC20 {\r\n    function transferFrom(address _from, address _to, uint _value) public returns (bool);\r\n    function approve(address _spender, uint _value) public returns (bool);\r\n    function allowance(address _owner, address _spender) public constant returns (uint);\r\n    event Approval(address indexed _owner, address indexed _spender, uint256 _value);\r\n}\r\n",
-  "sourcePath": "C:\\Users\\Utente\\github\\solidity\\coin\\contracts\\Token\\ERC20.sol",
+  "sourcePath": "C:\\Users\\home\\github\\solidity\\coin\\contracts\\Token\\ERC20.sol",
   "ast": {
-    "absolutePath": "/C/Users/Utente/github/solidity/coin/contracts/Token/ERC20.sol",
+    "absolutePath": "/C/Users/home/github/solidity/coin/contracts/Token/ERC20.sol",
     "exportedSymbols": {
       "ERC20": [
         711
@@ -594,7 +594,7 @@
     "src": "0:394:2"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/Utente/github/solidity/coin/contracts/Token/ERC20.sol",
+    "absolutePath": "/C/Users/home/github/solidity/coin/contracts/Token/ERC20.sol",
     "exportedSymbols": {
       "ERC20": [
         711
@@ -1089,5 +1089,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-15T17:14:47.399Z"
+  "updatedAt": "2018-05-16T11:45:43.195Z"
 }

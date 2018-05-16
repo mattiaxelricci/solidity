@@ -6,18 +6,16 @@ contract('2nd GrindCoin test', async (accounts) => {
      let instance = await TestCoin.deployed();
      let balance = await instance.balanceOf.call(accounts[0]);
      assert.equal(balance.valueOf(), 1000000);
-  })
+  });
 
 
-  it("should send coin correctly", async () => {
+  it("should send GrindCoins correctly", async () => {
 
-    // Get initial balances of first and second account.
     let account_one = accounts[0];
 
     let account_two = accounts[1];
 
     let amount = 10;
-
 
     let instance = await TestCoin.deployed();
     let test = instance;
@@ -40,7 +38,28 @@ contract('2nd GrindCoin test', async (accounts) => {
   });
 
 
-  it("should approve 500 MyToken to the delegated balance", async () => {
+  it("should not be able to tranfer GrindCoins with insufficient balance", async () => {
+
+    let account_four = accounts[4];
+
+
+    let account_five = accounts[5];
+
+    let amount = 1 ;
+
+    let instance = await TestCoin.deployed();
+    let test = instance;
+    try{
+      await test.transfer(account_four, amount, "", {from: account_five});
+      assert.fail();
+    }catch(err){
+      assert.ok(/revert/.test(err.message));
+    }
+  });
+
+
+
+  it("should approve 500 GrindCoins to the delegated balance", async () => {
 
     let account_one = accounts[0];
     let account_two = accounts[1];
@@ -57,22 +76,48 @@ contract('2nd GrindCoin test', async (accounts) => {
     assert.equal(_allowanceValue,amount,"Amount wasn't approved to the delegated balance");
   });
 
-it("should transfer 200 MyToken from the creator to the alt recipient via the delegated address",async () => {
+
+  it("delegated address with allowance should not be able to transfer more than its allowance",async () => {
+
+    let account_one = accounts[0];
+    let account_two = accounts[1];
+    let account_three = accounts[2];
+
+    let amount_allowance = 100;
+    let amount_requested = 200;
+
+    let instance = await TestCoin.deployed();
+    let test = instance;
+
+    await test.approve(account_three, amount_allowance, {from: account_one});
+    try{
+    await test.transferFrom(account_one , account_two, amount_requested,"",{from: account_three});
+    assert.fail();
+    }catch(err){
+      assert.ok(/revert/.test(err.message));
+    }
+});
+
+
+it("delegated address with sufficent allowance should not be able to transfer more than current owner balance",async () => {
 
   let account_one = accounts[0];
   let account_two = accounts[1];
+  let account_three = accounts[2];
 
-  let amount = 500
+  let amount_tranfer = 500000;
+  let amount_allowance = 1000000;
 
   let instance = await TestCoin.deployed();
   let test = instance;
 
-
-
-
-
-
-
-
-
+  await test.transfer(account_two, amount_tranfer,"",{from: account_one});
+  await test.approve(account_three, amount_allowance, {from: account_one});
+  try{
+  await test.transferFrom(account_one , account_two, amount_allowance,"",{from: account_three});
+  assert.fail();
+  }catch(err){
+    assert.ok(/revert/.test(err.message));
+  }
+  });
 });
