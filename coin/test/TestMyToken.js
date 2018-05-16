@@ -27,11 +27,11 @@ contract('MyToken', (accounts) => {
      var myTokenInstance;
      return MyToken.deployed().then((instance) => {
        myTokenInstance = instance;
-       return myTokenInstance.burn(10000,{from:creatorAddress});
+       return myTokenInstance.burn(10000, {from:creatorAddress});
      }).then(result => {
        return myTokenInstance.totalSupply.call();
      }).then(balance => {
-      assert.equal(balance.valueOf(), 990000, "Should have burned 10000 GrindCoins in the creator's Address");
+      assert.equal(balance.valueOf(), 990000, "Should have burned 10000 GrindCoins in the creator's address");
     });
 
    });
