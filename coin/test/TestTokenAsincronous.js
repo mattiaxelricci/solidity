@@ -69,7 +69,7 @@ contract('2nd GrindCoin test', async (accounts) => {
     let instance = await TestCoin.deployed();
     let test = instance;
 
-    await test.approve(account_two, amount,{from: account_one});
+    await test.approve(account_two, amount, {from: account_one});
 
     allowanceValue = await test.allowance.call(account_one,account_two);
     let _allowanceValue = allowanceValue.toNumber();
@@ -77,7 +77,7 @@ contract('2nd GrindCoin test', async (accounts) => {
   });
 
 
-  it("delegated address with allowance should not be able to transfer more than its allowance",async () => {
+  it("delegated address with allowance should not be able to transfer more than its allowance", async () => {
 
     let account_one = accounts[0];
     let account_two = accounts[1];
@@ -99,7 +99,7 @@ contract('2nd GrindCoin test', async (accounts) => {
 });
 
 
-it("delegated address with sufficent allowance should not be able to transfer more than current owner balance",async () => {
+it("delegated address with sufficent allowance should not be able to transfer more than current owner balance", async () => {
 
   let account_one = accounts[0];
   let account_two = accounts[1];
@@ -111,12 +111,12 @@ it("delegated address with sufficent allowance should not be able to transfer mo
   let instance = await TestCoin.deployed();
   let test = instance;
 
-  await test.transfer(account_two, amount_tranfer,"",{from: account_one});
+  await test.transfer(account_two, amount_tranfer, "", {from: account_one});
   await test.approve(account_three, amount_allowance, {from: account_one});
   try{
-  await test.transferFrom(account_one , account_two, amount_allowance,"",{from: account_three});
+  await test.transferFrom(account_one, account_two, amount_allowance, "", {from: account_three});
   assert.fail();
-  }catch(err){
+  } catch(err) {
     assert.ok(/revert/.test(err.message));
   }
   });

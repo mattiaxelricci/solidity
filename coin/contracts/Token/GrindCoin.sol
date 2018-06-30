@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.23;
 
 import "../Utilities/SafeMath.sol";
 import "./Token.sol";
@@ -8,7 +8,7 @@ import "./ERC223ReceivingContract.sol";
 import "../Utilities/Addresses.sol";
 
 
-contract GrindCoin is Token("GRC", "Grind Coin", 6, 1000000), ERC20, ERC223 {
+contract GrindCoin is Token("GRC", "Grind Coin", 3, 1000000), ERC20, ERC223 {
 
   using SafeMath for uint;
   using Addresses for address;

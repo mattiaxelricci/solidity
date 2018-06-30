@@ -1,4 +1,4 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.23;
 
 library Addresses {
   function isContract(address _base) internal constant returns (bool) {
